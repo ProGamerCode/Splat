@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TouchTapKill : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
+{ 
+    private void BugTap()
     {
-        
+        gameObject.SetActive(false); //When tap the bug will deactivate
+        GameObject.FindObjectOfType<BugObj>().SetScore();
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnMouseDown()
     {
-        
+        BugTap();
     }
 }

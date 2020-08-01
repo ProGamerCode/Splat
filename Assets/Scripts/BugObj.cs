@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class BugObj : MonoBehaviour
 {
@@ -12,11 +14,14 @@ public class BugObj : MonoBehaviour
     //*****************************************************/
     //likely to be removed in favor of getter and setter 
     //functions after testing is complete
-    [SerializeField]
-    private
-       int scoreVal = 0;
-       int velocity = 0;
-       bool allowDuplicates = true;
+    private int scoreVal = 0;
+    private int velocity = 0;
+    private bool allowDuplicates = true;
+
+    private string sc1 = "Score ";     //cache string value for save memory
+
+    [SerializeField] TextMeshProUGUI scoreText;
+
 
     //getter and setter functions
     int GetScore()
@@ -31,9 +36,9 @@ public class BugObj : MonoBehaviour
     {
         return allowDuplicates;
     }
-    void SetScore(int val)
+    public void SetScore()
     {
-        scoreVal = val;
+        scoreVal++;
     }
     void SetVelocity(int val)
     {
@@ -44,16 +49,13 @@ public class BugObj : MonoBehaviour
         allowDuplicates = val;
     }
 
-
-    // Start is called before the first frame update
     void Start()
     {
-        
+        scoreText.text = sc1 + GetScore().ToString();
     }
 
-    // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        
+        scoreText.text = sc1 + GetScore().ToString();
     }
 }
